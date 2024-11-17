@@ -1,0 +1,899 @@
+{
+	"info": {
+		"_postman_id": "8b7b22ba-190a-4089-a436-a487ef97219c",
+		"name": "Accuweather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37410548"
+	},
+	"item": [
+		{
+			"name": "GetLocationCodeByName-Warsaw",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has a valid response\", function() {",
+							"    response_json = pm.response.json();",
+							"    pm.expect(response_json).to.have.length.greaterThan(0);",
+							"    pm.expect(response_json[0]).to.have.property(\"LocalizedName\");",
+							"    pm.expect(response_json[0]).to.have.property(\"Key\");",
+							"    pm.expect(response_json[0].LocalizedName).to.be.eq(\"Warsaw\");",
+							"    pm.expect(response_json[0].Key).to.be.eq(pm.variables.get(\"locationWarsaw\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{apiKeyBase}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/locations/v1/cities/autocomplete?q=Warsaw",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"locations",
+						"v1",
+						"cities",
+						"autocomplete"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Warsaw"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLocationCodeByName-Minsk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has a valid response\", function() {",
+							"    response_json = pm.response.json();",
+							"    pm.expect(response_json).to.have.length.greaterThan(0);",
+							"    pm.expect(response_json[0]).to.have.property(\"LocalizedName\");",
+							"    pm.expect(response_json[0]).to.have.property(\"Key\");",
+							"    pm.expect(response_json[0].LocalizedName).to.be.eq(\"Minsk\");",
+							"    pm.expect(response_json[0].Key).to.be.eq(pm.variables.get(\"locationMinsk\"));",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{apiKeyBase}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/locations/v1/cities/autocomplete?q=Minsk",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"locations",
+						"v1",
+						"cities",
+						"autocomplete"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Minsk"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeatherTenDays-Warsaw",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{apiKeyBase}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/daily/10day/{{locationWarsaw}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"daily",
+						"10day",
+						"{{locationWarsaw}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeatherTenDays-Minsk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{apiKeyBase}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/daily/10day/{{locationMinsk}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"daily",
+						"10day",
+						"{{locationMinsk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeatherOneDay-Warsaw",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has a valid response\", function() {",
+							"    response_json = pm.response.json();",
+							"    pm.expect(response_json).to.have.property(\"DailyForecasts\");",
+							"    pm.expect(response_json.DailyForecasts).to.have.length == 1;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{apiKeyBase}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/daily/1day/{{locationWarsaw}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"daily",
+						"1day",
+						"{{locationWarsaw}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeatherOneDay-Minsk",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has a valid response\", function() {",
+							"    response_json = pm.response.json();",
+							"    pm.expect(response_json).to.have.property(\"DailyForecasts\");",
+							"    pm.expect(response_json.DailyForecasts).to.have.length == 1;",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{apiKeyBase}}",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "apikey",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/daily/1day/{{locationMinsk}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"daily",
+						"1day",
+						"{{locationMinsk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Warsaw-default",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has summary field\", function() {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Summary\");",
+							"});",
+							"pm.test(\"Has valid summaries field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Summaries\");",
+							"    pm.expect(responseJson.Summaries).to.have.length.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsWarsaw}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsWarsaw}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Minsk-default",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has summary field\", function() {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Summary\");",
+							"});",
+							"pm.test(\"Has valid summaries field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Summaries\");",
+							"    pm.expect(responseJson.Summaries).to.have.length.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsMinsk}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsMinsk}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Warsaw-en",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has summary field\", function() {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Summary\");",
+							"});",
+							"pm.test(\"Has valid summaries field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Summaries\");",
+							"    pm.expect(responseJson.Summaries).to.have.length.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsWarsaw}}&language=en-us",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsWarsaw}}"
+						},
+						{
+							"key": "language",
+							"value": "en-us"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Minsk-en",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has summary field\", function() {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Summary\");",
+							"});",
+							"pm.test(\"Has valid summaries field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Summaries\");",
+							"    pm.expect(responseJson.Summaries).to.have.length.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsMinsk}}&language=en-us",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsMinsk}}"
+						},
+						{
+							"key": "language",
+							"value": "en-us"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Warsaw-ru",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has summary field\", function() {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Summary\");",
+							"});",
+							"pm.test(\"Has valid summaries field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Summaries\");",
+							"    pm.expect(responseJson.Summaries).to.have.length.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsWarsaw}}&language=ru",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsWarsaw}}"
+						},
+						{
+							"key": "language",
+							"value": "ru"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Minsk-ru",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has summary field\", function() {",
+							"    pm.expect(pm.response.json()).to.have.property(\"Summary\");",
+							"});",
+							"pm.test(\"Has valid summaries field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Summaries\");",
+							"    pm.expect(responseJson.Summaries).to.have.length.greaterThan(0);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsMinsk}}&language=ru",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsMinsk}}"
+						},
+						{
+							"key": "language",
+							"value": "ru"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Warsaw-invalid-language",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has expected message field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Message\");",
+							"    pm.expect(responseJson.Message).to.contain(\"Language invalid or not supported\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsWarsaw}}&language=qwerty",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsWarsaw}}"
+						},
+						{
+							"key": "language",
+							"value": "qwerty"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWeather120Minutes-Minsk-invalid-language",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							"pm.test(\"Has expected message field\", function() {",
+							"    var responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.have.property(\"Message\");",
+							"    pm.expect(responseJson.Message).to.contain(\"Language invalid or not supported\");",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/forecasts/v1/minute/?q={{gpsMinsk}}&language=qwerty",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"forecasts",
+						"v1",
+						"minute",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "{{gpsMinsk}}"
+						},
+						{
+							"key": "language",
+							"value": "qwerty"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{apiKey}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "apikey",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiKey",
+			"value": "Vs8vhm9r0y5yBI19Zef8630IJFz3ILja",
+			"type": "string"
+		},
+		{
+			"key": "apiKeyBase",
+			"value": "wphfwJeAYQM5CPbs7m0PAhMYTx4errSJ",
+			"type": "string"
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://dataservice.accuweather.com",
+			"type": "string"
+		},
+		{
+			"key": "locationWarsaw",
+			"value": "274663",
+			"type": "string"
+		},
+		{
+			"key": "locationMinsk",
+			"value": "28580",
+			"type": "string"
+		},
+		{
+			"key": "gpsWarsaw",
+			"value": "52.237049,21.017532",
+			"type": "string"
+		},
+		{
+			"key": "gpsMinsk",
+			"value": "53.9,27.56667",
+			"type": "string"
+		}
+	]
+}
