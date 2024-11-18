@@ -113,6 +113,7 @@
                 <version>2.12.0</version>
                 <configuration>
                     <reportVersion>2.4.1</reportVersion>
+                         //тут надо указать еще buildDirectory
                 </configuration>
             </plugin>
 
